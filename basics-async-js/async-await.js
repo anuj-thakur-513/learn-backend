@@ -1,16 +1,16 @@
 // ASYNC AWAIT
 
-movePlayer(100, "Left")
-  .then(() => movePlayer(400, "Left"))
-  .then(() => movePlayer(10, "Right"))
-  .then(() => movePlayer(350, "Left"));
+// movePlayer(100, "Left")
+//   .then(() => movePlayer(400, "Left"))
+//   .then(() => movePlayer(10, "Right"))
+//   .then(() => movePlayer(350, "Left"));
 
-async function palyerStart() {
-  const firstMove = await movePlayer(100, "Left"); //pause
-  await movePlayer(400, "Left"); // pause
-  await movePlayer(10, "Right"); // pause
-  await movePlayer(350, "Left"); // pause
-}
+// async function palyerStart() {
+//   const firstMove = await movePlayer(100, "Left"); //pause
+//   await movePlayer(400, "Left"); // pause
+//   await movePlayer(10, "Right"); // pause
+//   await movePlayer(350, "Left"); // pause
+// }
 
 // practical example
 const urls = [
@@ -32,3 +32,21 @@ const getData = async function () {
     console.log("err: ", e);
   }
 };
+
+// for of
+const loopThroughUrls = (url) => {
+  for (url of urls) {
+    console.log(url);
+  }
+};
+
+// for await of
+const getData2 = async function () {
+  const arrayOfPromises = urls.map((url) => fetch(url));
+  for await (let request of arrayOfPromises) {
+    const data = await request.json();
+    console.log(data);
+  }
+};
+
+getData2();
