@@ -28,7 +28,11 @@ fs.createReadStream("kepler-data.csv")
     console.log(e);
   })
   .on("end", () => {
-    console.log(habitablePlanets);
+    console.log(
+      habitablePlanets.map((planet) => {
+        return planet["kepler_name"];
+      })
+    );
     console.log(
       `Found ${habitablePlanets.length} habitable planets like earth!!!`
     );
