@@ -18,6 +18,10 @@ app.get("/", (req, res) => {
   res.json(friends);
 });
 
+app.get("/friends", (req, res) => {
+  res.json(friends);
+});
+
 app.get("/friends/:friendId", (req, res) => {
   const friendId = +req.params.friendId; // converting to number using '+' sign
   const friend = friends[friendId];
