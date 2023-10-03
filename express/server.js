@@ -25,6 +25,23 @@ app.use((req, res, next) => {
   );
 });
 
+app.use(express.json());
+
+app.post("/friends", (req, res) => {
+  if (!req.body.name) {
+    return res.status(400).json({
+      error: "Missing friend name",
+    });
+  }
+  const newFriend = {
+    name: req.body.name,
+    id: friends.length,
+  };
+
+  friends.push(newFriend);
+  res.json(newFriend);
+});
+
 app.get("/", (req, res) => {
   res.json(friends);
 });
@@ -47,10 +64,6 @@ app.get("/friends/:friendId", (req, res) => {
 
 app.get("/messages", (req, res) => {
   res.send("<ul><li>Hello Tesla</li></ul>");
-});
-
-app.post("/messages", (req, res) => {
-  console.log("Updating messages");
 });
 
 app.listen(PORT, () => {
