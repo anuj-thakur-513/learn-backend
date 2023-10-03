@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   // actions go here...
   const delta = Date.now() - start;
   console.log(
-    `Method: ${req.method}, URL: ${req.url}, Time Taken for Req.: ${delta}ms`
+    `Method: ${req.method}, URL: ${req.baseUrl}${req.url}, Time Taken for Req.: ${delta}ms`
   );
 });
 

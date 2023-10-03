@@ -6,6 +6,7 @@ function getMessages(req, res) {
 // POST message to the server
 function postMessage(req, res) {
   console.log("Updating messages...");
+  res.end();
 }
 
 module.exports = {
