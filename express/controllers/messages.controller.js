@@ -1,6 +1,10 @@
+const path = require("path");
+
 // GET messages from the server
 function getMessages(req, res) {
-  res.send("<ul><li>Hello Tesla</li></ul>");
+  const file = path.join(__dirname, "..", "public", "skimountain.jpg");
+  res.sendFile(file);
+  // res.send("<ul><li>Hello Tesla</li></ul>");
 }
 
 // POST message to the server
