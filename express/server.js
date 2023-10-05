@@ -2,8 +2,12 @@ const express = require("express");
 const path = require("path");
 const friendsRouter = require("./routes/friends.router");
 const messagesRouter = require("./routes/messages.router");
+const rootRouter = require("./routes/root.router");
 
 const app = express();
+app.set("view engine", "hbs"); // setting the template engine for dynamic HTML
+app.set("views", path.join(__dirname, "views"));
+
 const PORT = 3000;
 
 // middleware function
@@ -25,6 +29,7 @@ app.use(express.static(directory));
 app.use(express.json());
 
 // using ROUTER to add routes into the application
+app.use("/", rootRouter);
 app.use("/friends", friendsRouter);
 app.use("/messages", messagesRouter);
 
