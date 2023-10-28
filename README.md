@@ -11,7 +11,11 @@ I'm learning backend-dev and will keep updating all my basic learnings in this r
 * Express Basics(MVC architecture) -> [Link](https://github.com/anuj-thakur-513/learn-backend/tree/main/express)
 * Improving Performance of Node Applications -> [Link](https://github.com/anuj-thakur-513/learn-backend/tree/main/performance-example)
 * Security Example -> [Link](https://github.com/anuj-thakur-513/learn-backend/tree/main/security-example)
-* How to Generate Self Signed Certificate for https server -> [Link](https://github.com/anuj-thakur-513/learn-backend/blob/main/security-example/generate-self-signed-certificate.txt)
+
+## Script to Generate Self Signed Certificate using OpenSSL
+```
+openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
+```
   
 ## Authors
 
