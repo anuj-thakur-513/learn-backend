@@ -4,6 +4,7 @@ const https = require("https");
 const helmet = require("helmet");
 const express = require("express");
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 const { Strategy } = require("passport-google-oauth20");
 
 require("dotenv").config();
@@ -13,6 +14,8 @@ const PORT = 3000;
 const config = {
   CLIENT_ID: process.env.GOOGLE_AUTH_CLIENT_ID,
   CLIENT_SECRET: process.env.GOOGLE_AUTH_CLIENT_SECRET,
+  COOKIE_KEY_1: process.env.COOKIE_KEY_1,
+  COOKIE_KEY_2: process.env.COOKIE_KEY_2,
 };
 
 const AUTH_OPTIONS = {
@@ -34,6 +37,14 @@ const options = {
 };
 
 app.use(helmet());
+
+app.use(
+  cookieSession({
+    name: "session",
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [config.COOKIE_KEY_1, config.COOKIE_KEY_2],
+  })
+);
 app.use(passport.initialize());
 
 // middleware to check if the user is logged in
